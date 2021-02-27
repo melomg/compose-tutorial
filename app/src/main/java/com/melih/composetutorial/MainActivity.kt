@@ -8,9 +8,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -49,6 +50,8 @@ fun AppPreview() {
 
 @Composable
 fun NewsStory(names: List<String> = listOf("Android", "there")) {
+    val counterState = remember { mutableStateOf(0) }
+
     MaterialTheme {
         val typography = MaterialTheme.typography
         Column(modifier = Modifier.padding(16.dp)) {
@@ -80,6 +83,13 @@ fun NewsStory(names: List<String> = listOf("Android", "there")) {
                 Divider()
             }
 
+            ClickCounter(
+                clickCount = counterState.value,
+                onClick = {
+                    counterState.value++
+                }
+            )
+
         }
     }
 }
@@ -93,9 +103,9 @@ fun NewsPreview() {
 }
 
 @Composable
-fun ClickCounter(clicks: Int, onClick: () -> Unit) {
+fun ClickCounter(clickCount: Int, onClick: () -> Unit) {
     Button(onClick = onClick) {
-        Text("I've been clicked $clicks times")
+        Text("I've been clicked $clickCount times")
     }
 }
 
