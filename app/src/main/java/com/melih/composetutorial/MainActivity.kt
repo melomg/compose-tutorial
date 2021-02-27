@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -23,22 +24,35 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeTutorialTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    NewsStory()
-                }
+            App {
+                NewsStory()
             }
         }
     }
+}
 
+@Composable
+fun App(content: @Composable () -> Unit) {
+    ComposeTutorialTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(color = MaterialTheme.colors.background) {
+            content()
+        }
+    }
+}
+
+@Preview
+@Composable
+fun AppPreview() {
+    App {
+        NewsStory()
+    }
 }
 
 @Composable
 fun NewsStory() {
     MaterialTheme {
         val typography = MaterialTheme.typography
-
         Column(modifier = Modifier.padding(16.dp)) {
             Image(
                 painter = painterResource(R.drawable.header),
@@ -52,9 +66,10 @@ fun NewsStory() {
 
             Spacer(Modifier.height(16.dp))
 
-            Text(text = "A day wandering through the sandhills \" +\n" +
-                    "                     \"in Shark Fin Cove, and a few of the \" +\n" +
-                    "                     \"sights I saw",
+            Text(
+                text = "A day wandering through the sandhills \" +\n" +
+                        "                     \"in Shark Fin Cove, and a few of the \" +\n" +
+                        "                     \"sights I saw",
                 style = typography.h6,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
@@ -67,6 +82,15 @@ fun NewsStory() {
 
 @Preview
 @Composable
-fun DefaultPreview() {
-    NewsStory()
+fun NewsPreview() {
+    ComposeTutorialTheme {
+        NewsStory()
+    }
 }
+
+/*@Composable
+fun ClickCounter(clicks: Int, onClick: () -> Unit) {
+    Button(onClick = onClick) {
+        Text("I've been clicked $clicks times")
+    }
+}*/

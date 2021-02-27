@@ -46,6 +46,8 @@ captures/
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 /.idea/misc.xml
+.idea/vcs.xml
+.idea/deploymentTargetDropDown.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
 
@@ -84,4 +86,3 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-.idea/vcs.xml
