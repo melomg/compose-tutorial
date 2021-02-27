@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,7 +48,7 @@ fun AppPreview() {
 }
 
 @Composable
-fun NewsStory() {
+fun NewsStory(names: List<String> = listOf("Android", "there")) {
     MaterialTheme {
         val typography = MaterialTheme.typography
         Column(modifier = Modifier.padding(16.dp)) {
@@ -76,6 +74,12 @@ fun NewsStory() {
             )
             Text("Davenport, California", style = typography.body2)
             Text("December 2018", style = typography.body2)
+
+            for (name in names) {
+                Greeting(name = name)
+                Divider()
+            }
+
         }
     }
 }
@@ -88,9 +92,14 @@ fun NewsPreview() {
     }
 }
 
-/*@Composable
+@Composable
 fun ClickCounter(clicks: Int, onClick: () -> Unit) {
     Button(onClick = onClick) {
         Text("I've been clicked $clicks times")
     }
-}*/
+}
+
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+}
