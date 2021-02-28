@@ -147,12 +147,14 @@ fun ClickCounter(clickCount: Int, onClick: () -> Unit) {
 @Composable
 fun Greeting(name: String) {
     var isSelected by remember { mutableStateOf(false) }
-    val backgroundColor by animateColorAsState(if(isSelected) Color.Red else Color.Transparent)
+    val backgroundColor by animateColorAsState(if (isSelected) Color.Red else Color.Transparent)
 
-    Text(text = "Hello $name!", modifier = Modifier
-        .clickable { isSelected = !isSelected }
-        .padding(24.dp)
-        .background(color = backgroundColor),
+    Text(
+        text = "Hello $name!",
+        modifier = Modifier
+            .clickable { isSelected = !isSelected }
+            .padding(24.dp)
+            .background(color = backgroundColor),
         style = MaterialTheme.typography.h6,
         color = MaterialTheme.colors.onSurface,
     )
