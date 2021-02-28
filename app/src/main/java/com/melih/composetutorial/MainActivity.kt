@@ -153,8 +153,9 @@ fun Greeting(name: String) {
         text = "Hello $name!",
         modifier = Modifier
             .clickable { isSelected = !isSelected }
+            .background(color = backgroundColor)
             .padding(24.dp)
-            .background(color = backgroundColor),
+            .fillMaxWidth(),
         style = MaterialTheme.typography.h6,
         color = MaterialTheme.colors.onSurface,
     )
