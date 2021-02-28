@@ -54,42 +54,47 @@ fun NewsStory(names: List<String> = listOf("Android", "there")) {
 
     MaterialTheme {
         val typography = MaterialTheme.typography
-        Column(modifier = Modifier.padding(16.dp)) {
-            Image(
-                painter = painterResource(R.drawable.header),
-                contentDescription = null,
+        Column(modifier = Modifier.fillMaxHeight()) {
+            Column(
                 modifier = Modifier
-                    .height(180.dp)
-                    .fillMaxWidth()
-                    .clip(shape = RoundedCornerShape(4.dp)),
-                contentScale = ContentScale.Crop,
-            )
+                    .weight(1f)
+                    .padding(16.dp)
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.header),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(180.dp)
+                        .fillMaxWidth()
+                        .clip(shape = RoundedCornerShape(4.dp)),
+                    contentScale = ContentScale.Crop,
+                )
 
-            Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(16.dp))
 
-            Text(
-                text = "A day wandering through the sandhills \" +\n" +
-                        "                     \"in Shark Fin Cove, and a few of the \" +\n" +
-                        "                     \"sights I saw",
-                style = typography.h6,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text("Davenport, California", style = typography.body2)
-            Text("December 2018", style = typography.body2)
+                Text(
+                    text = "A day wandering through the sandhills \" +\n" +
+                            "                     \"in Shark Fin Cove, and a few of the \" +\n" +
+                            "                     \"sights I saw",
+                    style = typography.h6,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text("Davenport, California", style = typography.body2)
+                Text("December 2018", style = typography.body2)
 
-            for (name in names) {
-                Greeting(name = name)
-                Divider()
+                for (name in names) {
+                    Greeting(name = name)
+                    Divider()
+                }
             }
 
             ClickCounter(
                 clickCount = counterState.value,
                 onClick = {
                     counterState.value++
-                }
+                },
             )
-
         }
     }
 }
