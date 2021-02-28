@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.android.material.color.MaterialColors
 import com.melih.composetutorial.ui.theme.ComposeTutorialTheme
 
 class MainActivity : AppCompatActivity() {
@@ -149,8 +150,10 @@ fun Greeting(name: String) {
     val backgroundColor by animateColorAsState(if(isSelected) Color.Red else Color.Transparent)
 
     Text(text = "Hello $name!", modifier = Modifier
-        .padding(24.dp)
-        .background(color = backgroundColor)
         .clickable { isSelected = !isSelected }
+        .padding(24.dp)
+        .background(color = backgroundColor),
+        style = MaterialTheme.typography.h6,
+        color = MaterialTheme.colors.onSurface,
     )
 }
