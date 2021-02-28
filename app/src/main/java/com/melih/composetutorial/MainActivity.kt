@@ -148,6 +148,10 @@ fun ClickCounter(clickCount: Int, onClick: () -> Unit) {
 fun Greeting(name: String) {
     var isSelected by remember { mutableStateOf(false) }
     val backgroundColor by animateColorAsState(if (isSelected) Color.Red else Color.Transparent)
+    val textColor by animateColorAsState(
+        if (isSelected) MaterialTheme.colors.surface
+        else MaterialTheme.colors.onSurface
+    )
 
     Text(
         text = "Hello $name!",
@@ -157,6 +161,6 @@ fun Greeting(name: String) {
             .padding(24.dp)
             .fillMaxWidth(),
         style = MaterialTheme.typography.h6,
-        color = MaterialTheme.colors.onSurface,
+        color = textColor,
     )
 }
